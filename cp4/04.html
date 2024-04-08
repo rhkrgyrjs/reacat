@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>순수 리액트 예제</title>
+    </head>
+    <body>
+        <!-- 타겟 컨테이너 -->
+        <div id="root"></div>
+        <!-- React, ReactDOM 라이브러리-->
+        <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+        <script>
+            // 리액트, 자바스크립트 코드
+
+            // 리액트 DOM 생성
+            const dish = React.createElement("h1", null, "구운 연어");
+            const dessert = React.createElement("h2", null, "코코넛 크림 파이");
+
+            // 재료를 저장하는 배열 생성
+            const dish_items = ["연어 900그램", "신선한 로즈마리 5가지", "올리브 오일 2테이블스푼", "작은 레몬 2조각", "코셔 소금 1티스푼", "다진 마늘 4쪽"];
+            const dessert_items = ["무염 버터 1컵", "크런치 땅콩 버터 1컵", "흑설탕 1컵", "백설탕 1컵", "달걀 2개", "일반 밀가루 2.5컵", "베이킹 소다 1티스푼", "소금 0.5티스푼"];
+
+            // 재료를 나열하는 unordered list 컴포넌트 생성하는 함수 선언
+            const ingredientsList = (ingredients) => 
+            React.createElement("ul", { className: "ingredients"}, 
+            ingredients.map((ingredient, i) => React.createElement("li", {key : i}, ingredient)));
+            
+            // 렌더링
+            ReactDOM.render([dish, ingredientsList(dish_items), dessert, ingredientsList(dessert_items)], document.getElementById("root"));
+        </script>
+    </body>
+</html>
